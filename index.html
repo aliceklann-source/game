@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Space Retro Arcade</title>
+<link rel="stylesheet" href="stylle.css">
+</head>
+<body>
+<div class="arcade-cabinet">
+<div class="hud">
+<div>PONTOS: <span id="score">0000</span></div>
+<div>FASE: <span id="level">1</span></div>
+<div>VIDAS: <span id="lives">♥♥♥</span></div>
+</div>
+
+<canvas id="gameCanvas" width="600" height="450"></canvas>
+
+<div class="controls-info">
+[ ← / → ] MOVER &nbsp;&nbsp;|&nbsp;&nbsp; [ ESPAÇO ] ATIRAR
+</div>
+
+<!-- Tela Inicial / Game Over -->
+<div id="overlay">
+<h1 id="overlay-title">SPACE RETRO</h1>
+<p id="overlay-sub">PRESSIONE START PARA JOGAR</p>
+<button id="start-btn" onclick="startGame()">START</button>
+</div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
+
+Postada por ALEX GONCALVES DE OLIVEIRA
+ALEX GONCALVES DE OLIVEIRA
+Criado em: 17 de nov.17 de nov.
+stylle.css
+
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+user-select: none;
+}
+
+body {
+background-color: #0d0d12;
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+font-family: 'Courier New', Courier, monospace;
+color: #00ff66;
+}
+
+.arcade-cabinet {
+position: relative;
+background: #000;
+border: 4px solid #333;
+border-radius: 12px;
+padding: 15px;
+box-shadow: 0 0 30px rgba(0, 255, 102, 0.2);
+}
+
+/* Efeito de linhas de monitor antigo */
+.arcade-cabinet::after {
+content: "";
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.35) 50%);
+background-size: 100% 4px;
+pointer-events: none;
+border-radius: 8px;
+}
+
+.hud {
+display: flex;
+justify-content: space-between;
+font-size: 20px;
+font-weight: bold;
+padding-bottom: 10px;
+border-bottom: 2px solid #00ff66;
+margin-bottom: 10px;
+text-shadow: 0 0 8px #00ff66;
+}
+
+#lives {
+color: #ff3366;
+text-shadow: 0 0 8px #ff3366;
+}
+
+canvas {
+display: block;
+background-color: #050508;
+border: 1px solid #1a1a24;
+}
+
+.controls-info {
+text-align: center;
+margin-top: 10px;
+font-size: 14px;
+color: #888;
+}
+
+#overlay {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.85);
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+z-index: 5;
+border-radius: 8px;
+}
+
+#overlay.hidden {
+display: none;
+}
+
+#overlay h1 {
+font-size: 46px;
+color: #00ff66;
+text-shadow: 0 0 15px #00ff66;
+margin-bottom: 10px;
+letter-spacing: 4px;
+}
+
+#overlay p {
+font-size: 18px;
+color: #fff;
+margin-bottom: 25px;
+animation: blink 1s infinite;
+}
+
+@keyframes blink {
+50% { opacity: 0.2; }
+}
+
+#start-btn {
+background: #00ff66;
+color: #000;
+border: none;
+padding: 12px 35px;
+font-size: 22px;
+font-family: inherit;
+font-weight: bold;
+cursor: pointer;
+box-shadow: 0 0 15px #00ff66;
+}
+
+#start-btn:hover {
+background: #fff;
+box-shadow: 0 0 20px #fff;
